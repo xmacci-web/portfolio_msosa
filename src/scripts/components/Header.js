@@ -1,24 +1,31 @@
+// ton code ici (ps, efface cette ligne stp)
 export default class Header {
   constructor(element) {
     this.element = element;
+    this.options = {
+      treshold: 0.1,
+      autoHide: false,
+    };
     this.scrollPosition = 0;
     this.lastScrollPosition = 0;
     this.html = document.documentElement;
-    this.options = {
-      threshold: this.element.dataset.threshold,
-      alwaysShow: false,
-    };
-
     this.init();
     this.initNavMobile();
   }
   init() {
     this.setOptions();
-    window.addEventListener('scroll', this.onScroll.bind(this));
+
+    if (this.options.autoHide == true) {
+      window.addEventListener('scroll', this.onScroll.bind(this));
+    }
   }
   setOptions() {
-    if ('autoShow' in this.element.dataset) {
-      this.options.alwaysShow = true;
+    if ('autoHide' in this.element.dataset) {
+      this.options.autoHide = true;
+    }
+
+    if ('treshold' in this.element.dataset) {
+      this.options.treshold = this.element.dataset.treshold;
     }
   }
   onScroll() {
