@@ -35,7 +35,7 @@ export default class Header {
     this.setDirections();
   }
   setHeaderState() {
-    if (this.options.alwaysShow == false) {
+    if (this.options.autoHide == true) {
       if (
         this.scrollPosition >
         document.scrollingElement.scrollHeight * this.options.threshold
