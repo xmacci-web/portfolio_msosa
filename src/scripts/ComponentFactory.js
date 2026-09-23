@@ -1,7 +1,27 @@
+import Scroller from './components/Scroller.js';
+import Scrolly from './components/Scrolly.js';
+import Carousel from './components/Carousel.js';
+import Youtube from './components/Youtube.js';
+import Accordion from './components/Accordion.js';
+import Form from './components/Form.js';
+import Header from './components/Header.js';
+import Tabs from './components/Tabs.js';
+import TextAnim from './components/TextAnim.js';
+
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
-    this.componentList = {};
+    this.componentList = {
+      Scroller,
+      Scrolly,
+      Carousel,
+      Youtube,
+      Accordion,
+      Form,
+      Header,
+      Tabs,
+      TextAnim,
+    };
     this.init();
   }
   init() {
