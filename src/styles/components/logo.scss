@@ -1,0 +1,17 @@
+.logo {
+    font-size: var(--font-size-brand) !important;
+    font-family: var(--font-secondary) !important;
+    z-index: 10;
+    transform: scale(0.8);
+    transition: all 0.8s $ease-out-expo;
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+        transform: scale(1);
+        color: var(--color-white);
+    }
+}

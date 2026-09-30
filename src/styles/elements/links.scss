@@ -6,13 +6,17 @@
 a {
     color: var(--color-primary);
     text-decoration: none;
-
+    font-size: var(--font-size-link);
+    font-family: var(--font-primary);
     &:hover {
         color: var(--color-primary);
-        text-decoration: underline;
+        text-decoration: none;
     }
 
     &.disabled {
         color: #e2e2e2;
     }
+}
+a.logo {
+    font-size: var(--font-size-brand) !important;
 }
