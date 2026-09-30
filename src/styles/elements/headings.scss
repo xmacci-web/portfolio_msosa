@@ -16,13 +16,18 @@ h6 {
 h1 {
     font-size: var(--font-size-h1);
     margin-top: 0;
-    color: var(--color-white);
+    color: transparent;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: var(--color-white);
+    word-spacing: -10px;
+    letter-spacing: -2px;
 }
 
 h2 {
     font-size: var(--font-size-h2);
-    font-family: var(--font-secondary);
-    color: var(--color-primary);
+    font-family: var(--font-primary);
+    color: var(--color-white);
+    text-transform: uppercase;
 }
 
 h3 {
