@@ -11,8 +11,8 @@ body {
     background: var(--color-bg-primary);
     color: var(--color-black);
     font-family: var(--font-primary);
-    font-size: var(--font-size-content);
-    line-height: 1.6;
+    font-size: var(--font-size-p);
+    line-height: 50px;
 }
 .video {
     position: fixed;
@@ -36,4 +36,8 @@ body {
     z-index: 15;
     pointer-events: none;
     filter: url(#blackNoise);
+}
+.highlight {
+    color: var(--color-primary);
+    font-weight: 800;
 }

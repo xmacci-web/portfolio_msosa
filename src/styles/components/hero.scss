@@ -47,7 +47,7 @@
         top: 40%;
         left: 0;
         display: flex;
-        gap: 40px;
+        gap: 50px;
         z-index: -1;
         transform-origin: left center;
 
@@ -62,7 +62,7 @@
         }
 
         .Silva {
-            letter-spacing: 12px;
+            letter-spacing: 18px;
         }
         @media screen and (max-width: 1200px) {
             transform: scale(0.9);
@@ -72,10 +72,18 @@
                 letter-spacing: 20px;
             }
         }
+        @media screen and (max-width: 1100px) {
+            transform: scale(0.9);
+            top: 45%;
+            gap: 80px;
+            .Silva {
+                letter-spacing: 20px;
+            }
+        }
         @media screen and (max-width: 1000px) {
             transform: scale(0.9);
             top: 45%;
-            gap: 30px;
+            gap: 80px;
         }
         @media screen and (max-width: 900px) {
             transform: scale(0.9);
@@ -102,6 +110,16 @@
                 letter-spacing: 20px;
             }
         }
+        @media screen and (max-width: 700px) {
+            transform: scale(1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            transform: scale(0.8);
+            row-gap: 60px;
+            column-gap: 135px;
+            top: 6%;
+            left: 10px;
+        }
         @media screen and (max-width: 650px) {
             transform: scale(1);
             display: grid;
@@ -118,7 +136,7 @@
                 letter-spacing: 20px;
             }
         }
-        @media screen and (max-width: 560px) {
+        @media screen and (max-width: 580px) {
             transform: scale(1);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -134,14 +152,24 @@
                 letter-spacing: 20px;
             }
         }
-        @media screen and (max-width: 420px) {
+        @media screen and (max-width: 520px) {
             transform: scale(1);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             transform: scale(0.8);
             row-gap: 60px;
+            column-gap: 50px;
+            top: 6%;
+            left: 10px;
+        }
+        @media screen and (max-width: 420px) {
+            transform: scale(1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            transform: scale(0.8);
+            row-gap: 55px;
             column-gap: 45px;
-            top: 5%;
+            top: 7%;
             left: 10px;
             h1 {
                 letter-spacing: 10px;
@@ -197,5 +225,19 @@
         @media screen and (max-width: 900px) {
             display: none;
         }
+    }
+}
+.hero__under {
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    p {
+        text-align: center;
+        max-width: 59%;
+        width: 100%;
+        margin-inline: auto;
     }
 }
