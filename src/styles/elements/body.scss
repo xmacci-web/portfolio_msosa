@@ -14,16 +14,26 @@ body {
     font-size: var(--font-size-content);
     line-height: 1.6;
 }
+.video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 99;
+    opacity: 0.05;
+}
+.noise {
+    display: none;
+}
 .noise-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 15;
     pointer-events: none;
-    z-index: 10;
-    opacity: 0.32; /* Opacité : 32% */
     filter: url(#blackNoise);
-}
-.noise_creation {
-    display: none;
 }

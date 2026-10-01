@@ -1,0 +1,9 @@
+.star {
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+}
+
+.spanBig {
+    -webkit-text-stroke: 3px var(--color-primary);
+    font-size: var(--font-size-spanBig);
+}
