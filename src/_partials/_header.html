@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>M.Sosa Portfolio</title>
+        <title>M.Sosa Silva Portfolio</title>
 
         <link rel="stylesheet" href="styles/main.css" />
 
@@ -11,7 +11,8 @@
     </head>
 
     <body data-component="Scrolly" data-no-repeat>
-        <svg class="noise_creation">
+        <video class="video" src="/assets/videos/videobg.mp4" autoplay muted loop></video>
+        <svg class="noise" style="display: none;">
             <filter id="blackNoise">
             <!-- Size: 0.7 -->
             <feTurbulence 
@@ -26,10 +27,11 @@
                 values="0 0 0 0 0
                         0 0 0 0 0
                         0 0 0 0 0
-                        0 0 0 0.58 0" />
+                        0 0 0 0.32 0" />
             </filter>
         </svg>
         <div class="noise-overlay"></div>
+        
         
          <header class="header" data-component="Header" data-threshold="0.2">
             <div class="wrapper">
