@@ -5,11 +5,26 @@
     top: 0;
     width: 100%;
     padding: 30px 0px 0px 0px;
-    mix-blend-mode: difference;
+
+    background: linear-gradient(
+        180deg,
+        rgba(42, 42, 42, 1) 0%,
+        rgba(42, 42, 42, 0.3) 75%,
+        rgba(42, 42, 42, 0) 90%
+    );
+    transition:
+        transform 0.4s ease,
+        padding 0.3s ease;
+
+    .header-is-hidden & {
+        transform: translateY(-100%);
+    }
+
     @media screen and (max-width: 800px) {
         padding: 10px;
         --line-height: 9px;
     }
+
     .wrapper {
         display: flex;
         justify-content: space-between;
@@ -57,10 +72,10 @@
         padding-top: var(--header-height);
         display: flex;
         align-items: center;
-
         transform: translateY(-100%);
         transition: transform 0.6s $ease-out-expo;
     }
+
     ul {
         list-style-type: none;
         display: flex;
@@ -69,13 +84,13 @@
         margin: 0;
         padding: 0;
         width: 100%;
+
         @media screen and (max-width: 800px) {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 100%;
-
             transition: transform 1.6s $ease-out-expo;
+
             li {
                 width: 100%;
                 a {
@@ -89,21 +104,6 @@
 
     .nav-is-active & {
         transform: translateY(0);
-    }
-
-    @media screen and (max-width: 800px) {
-        color: var(--color-primary);
-        background-color: var(--color-black);
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100vh;
-        padding-top: var(--header-height);
-        display: flex;
-        align-items: center;
-        margin: 0 auto;
-        transform: translateY(-100%);
-        transition: transform 0.6s $ease-out-expo;
     }
 }
 
@@ -124,9 +124,6 @@
     display: none;
 
     span {
-        .nav-is-active & {
-            background-color: var(--color-primary);
-        }
         background-color: var(--color-primary);
         border-radius: 3px;
         height: var(--bar-height);
@@ -173,8 +170,8 @@
 
 .nav-is-active body {
     overflow: auto;
-
-    @media screen and (max-width: 800px) {
-        overflow: hidden !important;
+    .header {
+        mix-blend-mode: normal;
+        background-color: var(--color-black);
     }
 }

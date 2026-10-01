@@ -1,51 +1,58 @@
-// ton code ici (ps, efface cette ligne stp)
 export default class Header {
   constructor(element) {
     this.element = element;
     this.options = {
-      treshold: 0.1,
+      threshold: 50, // Seuil en pixels avant déclenchement
       autoHide: false,
     };
     this.scrollPosition = 0;
     this.lastScrollPosition = 0;
     this.html = document.documentElement;
+
     this.init();
     this.initNavMobile();
   }
+
   init() {
     this.setOptions();
 
-    if (this.options.autoHide == true) {
+    if (this.options.autoHide) {
       window.addEventListener('scroll', this.onScroll.bind(this));
     }
   }
+
   setOptions() {
     if ('autoHide' in this.element.dataset) {
       this.options.autoHide = true;
     }
 
-    if ('treshold' in this.element.dataset) {
-      this.options.treshold = this.element.dataset.treshold;
+    if ('threshold' in this.element.dataset) {
+      this.options.threshold = parseFloat(this.element.dataset.threshold);
     }
   }
+
   onScroll() {
     this.lastScrollPosition = this.scrollPosition;
     this.scrollPosition = document.scrollingElement.scrollTop;
-    this.setHeaderState();
+
     this.setDirections();
+    this.setHeaderState();
   }
+
   setHeaderState() {
-    if (this.options.autoHide == true) {
-      if (
-        this.scrollPosition >
-        document.scrollingElement.scrollHeight * this.options.threshold
-      ) {
-        this.html.classList.add('header-is-hidden');
-      } else {
-        this.html.classList.remove('header-is-hidden');
-      }
+    if (!this.options.autoHide) return;
+
+    const isScrollingDown = this.scrollPosition > this.lastScrollPosition;
+    const passedThreshold = this.scrollPosition > this.options.threshold;
+
+    // Masque si on scroll vers le bas ET qu'on a dépassé le seuil
+    if (isScrollingDown && passedThreshold) {
+      this.html.classList.add('header-is-hidden');
+    } else {
+      this.html.classList.remove('header-is-hidden');
     }
   }
+
   setDirections() {
     if (this.scrollPosition >= this.lastScrollPosition) {
       this.html.classList.add('is-scrolling-down');
@@ -55,10 +62,14 @@ export default class Header {
       this.html.classList.remove('is-scrolling-down');
     }
   }
+
   initNavMobile() {
     const toggle = this.element.querySelector('.js-toggle');
-    toggle.addEventListener('click', this.onToggleNav.bind(this));
+    if (toggle) {
+      toggle.addEventListener('click', this.onToggleNav.bind(this));
+    }
   }
+
   onToggleNav() {
     this.html.classList.toggle('nav-is-active');
   }

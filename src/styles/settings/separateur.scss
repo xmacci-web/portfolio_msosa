@@ -6,4 +6,13 @@
 }
 .separateur {
     padding-top: 150px;
+    @media screen and (max-width: $breakpoint-md) {
+        padding-top: 75px;
+    }
+}
+.separateur__competences {
+    padding-top: var(--spacing-xl);
+    @media screen and (max-width: $breakpoint-md) {
+        padding-top: 75px;
+    }
 }

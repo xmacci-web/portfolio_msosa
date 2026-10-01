@@ -1,24 +1,16 @@
-/* ==========================================================================
-   WRAPPER / ELEMENT
-   ========================================================================== */
-
 .wrapper {
     max-width: $breakpoint-xl;
     width: calc(100% - var(--spacing-xl));
     margin: 0 auto;
 
     @media screen and (max-width: $breakpoint-lg) {
-        max-width: $breakpoint-md;
-        width: calc(100% - var(--spacing-xl));
+        max-width: $breakpoint-lg;
     }
-
     @media screen and (max-width: $breakpoint-md) {
         max-width: $breakpoint-md;
-        width: calc(100% - var(--spacing-lg));
     }
 
     @media screen and (max-width: $breakpoint-sm) {
         max-width: $breakpoint-sm;
-        width: calc(100% - var(--spacing-md));
     }
 }

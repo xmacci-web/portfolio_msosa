@@ -3,6 +3,9 @@
     width: 100%;
     position: relative;
 
+    h2 {
+        color: var(--color-white);
+    }
     @media screen and (max-width: 900px) {
         min-height: auto;
     }
@@ -239,5 +242,20 @@
         max-width: 59%;
         width: 100%;
         margin-inline: auto;
+    }
+    @media screen and (max-width: 1800px) {
+        p {
+            max-width: 85%;
+        }
+    }
+    @media screen and (max-width: $breakpoint-lg) {
+        p {
+            max-width: 90%;
+        }
+    }
+    @media screen and (max-width: $breakpoint-md) {
+        p {
+            max-width: 100%;
+        }
     }
 }
