@@ -7,10 +7,12 @@
         max-width: $breakpoint-lg;
     }
     @media screen and (max-width: $breakpoint-md) {
+        width: calc(100% - var(--spacing-lg));
         max-width: $breakpoint-md;
     }
 
     @media screen and (max-width: $breakpoint-sm) {
+        width: calc(100% - var(--spacing-lg));
         max-width: $breakpoint-sm;
     }
 }
