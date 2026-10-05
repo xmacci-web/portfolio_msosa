@@ -7,7 +7,7 @@ import Form from './components/Form.js';
 import Header from './components/Header.js';
 import Tabs from './components/Tabs.js';
 import TextAnim from './components/TextAnim.js';
-
+import Projets from './components/Projets.js';
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
@@ -21,6 +21,7 @@ export default class ComponentFactory {
       Header,
       Tabs,
       TextAnim,
+      Projets,
     };
     this.init();
   }

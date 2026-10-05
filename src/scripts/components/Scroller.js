@@ -1,11 +1,12 @@
 import { gsap } from 'gsap';
 import { ScrollSmoother } from 'gsap/ScrollSmoother.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js';
+
 export default class Scroller {
   constructor(element) {
-    console.log('allo');
-
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    this.element = element;
     this.options = {
       hasSkew: false,
       hasScale: false,
@@ -13,34 +14,46 @@ export default class Scroller {
       hasHoriz: false,
     };
 
-    this.element = element;
     this.setOptions();
     this.init();
   }
+
   init() {
-    const scroller = ScrollSmoother.create({
+    this.smoother = ScrollSmoother.create({
+      wrapper: this.element,
+      content:
+        this.element.querySelector('#smooth-content') ||
+        this.element.firstElementChild,
       smooth: 1.5,
       effects: true,
       smoothTouch: 0.1,
-      onUpdate: this.onUpdateScroll.bind(this),
-      onStop: this.onStopScroll.bind(this),
+      onUpdate: (self) => this.onUpdateScroll(self),
+      onStop: (self) => this.onStopScroll(self),
       ease: 'expo.out',
     });
   }
+
   onUpdateScroll(self) {
     if (this.options.hasSkew) this.updateSkew(self);
     if (this.options.hasScale) this.updateScale(self);
   }
+
   onStopScroll(self) {
     if (this.options.hasSkew) this.stopSkew(self);
     if (this.options.hasScale) this.stopScale(self);
   }
-  //skew Controls
+
+  // --- SKEW CONTROLS ---
   initSkew() {
-    this.skewSetter = gsap.quickTo('img', 'skewY');
-    this.skewSetter(0);
+    this.skewTarget = this.element.querySelectorAll('[data-skew]');
+    if (this.skewTarget.length > 0) {
+      this.skewSetter = gsap.quickTo(this.skewTarget, 'skewY');
+      this.skewSetter(0);
+    }
   }
+
   updateSkew(self) {
+    if (!this.skewSetter) return;
     const velocity = self.getVelocity();
     const force = 5;
     let skew = gsap.utils.mapRange(-1000, 1000, -force, force, velocity);
@@ -48,17 +61,19 @@ export default class Scroller {
 
     this.skewSetter(skew);
   }
+
   stopSkew() {
-    this.skewSetter(0);
+    if (this.skewSetter) {
+      this.skewSetter(0);
+    }
   }
 
-  // Scale Controls
-
   initScale() {
-    this.scaleImages = this.element.querySelectorAll('img');
+    this.scaleImages = this.element.querySelectorAll('[data-scale]');
   }
 
   updateScale(self) {
+    if (!this.scaleImages || !this.scaleImages.length) return;
     const velocity = self.getVelocity();
     const force = 0.02;
     let scale = gsap.utils.mapRange(-1000, 1000, force, -force, velocity);
@@ -69,68 +84,22 @@ export default class Scroller {
   }
 
   stopScale() {
+    if (!this.scaleImages || !this.scaleImages.length) return;
     gsap.to(this.scaleImages, {
       scale: 1,
       duration: 0.5,
-      ease: 'ease.out',
+      ease: 'power2.out',
     });
-  }
-  //Pinned Controls
-  initPins() {
-    const pinnedItems = this.element.querySelectorAll('.js-pinned');
-    for (let i = 0; i < pinnedItems.length; i++) {
-      const pinnedItem = pinnedItems[i];
-      ScrollTrigger.create({
-        pin: pinnedItem,
-        trigger: pinnedItem.parentElement,
-        start: 'center center',
-        end: '80% center',
-        markers: true,
-      });
-    }
-  }
-
-  //Horiz Controls
-  initHoriz() {
-    const sectionsHoriz = this.element.querySelectorAll('.js-horiz');
-
-    for (let i = 0; i < sectionsHoriz.length; i++) {
-      const sectionHoriz = sectionsHoriz[i];
-      const panels = sectionHoriz.querySelectorAll('.js-panel');
-      const nbPanels = panels.length;
-      const buffer = 200;
-
-      gsap.to(panels, {
-        xPercent: -100 * (nbPanels - 1),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionHoriz,
-          pin: true,
-          scrub: 1,
-          snap: 1 / (nbPanels - 1),
-          end: () => `+=${sectionHoriz.offsetWidth * (nbPanels - 1) + buffer}`,
-          anticipatePin: 1,
-        },
-      });
-    }
   }
 
   setOptions() {
-    if ('skew' in this.element.dataset) {
+    if (this.element.querySelector('[data-skew]')) {
       this.options.hasSkew = true;
       this.initSkew();
     }
-    if ('scale' in this.element.dataset) {
+    if (this.element.querySelector('[data-scale]')) {
       this.options.hasScale = true;
       this.initScale();
-    }
-    if ('pinItems' in this.element.dataset) {
-      this.options.hasPinItems = true;
-      this.initPins();
-    }
-    if ('horiz' in this.element.dataset) {
-      this.options.hasHoriz = true;
-      this.initHoriz();
     }
   }
 }

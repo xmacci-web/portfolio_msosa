@@ -22,7 +22,6 @@
 
     @media screen and (max-width: 800px) {
         padding: 10px;
-        --line-height: 9px;
     }
 
     .wrapper {
@@ -31,32 +30,6 @@
         align-items: center;
         flex-wrap: wrap;
         gap: calc(30px - var(--line-height));
-    }
-
-    .line {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .line__inner {
-            display: inline-block;
-            height: 0;
-            border-top: var(--line-height) solid var(--color-white);
-            border-radius: 5px;
-            &:nth-child(1) {
-                width: 5%;
-            }
-            &:nth-child(2) {
-                width: 20%;
-            }
-            &:nth-child(3) {
-                width: 20%;
-            }
-            &:nth-child(4) {
-                width: 10%;
-            }
-        }
     }
 }
 
