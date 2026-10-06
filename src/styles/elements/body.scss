@@ -14,6 +14,27 @@ body {
     font-size: var(--font-size-p);
     line-height: 50px;
     overflow-x: hidden;
+    transition:
+        background-color 0.6s ease,
+        color 0.6s ease;
+    &.theme-light {
+        background-color: var(--color-bg-secondary);
+        color: var(--color-black);
+        .caractere h2 {
+            -webkit-text-stroke-color: var(--color-black);
+        }
+        .header {
+            background: linear-gradient(
+                180deg,
+                rgba(42, 42, 42, 1) 0%,
+                rgba(42, 42, 42, 0.3) 80%,
+                rgba(42, 42, 42, 0) 100%
+            );
+            .line__inner {
+                border-top: var(--line-height) solid var(--color-black);
+            }
+        }
+    }
 }
 .video {
     position: fixed;

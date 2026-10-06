@@ -43,7 +43,6 @@ export default class Scroller {
     if (this.options.hasScale) this.stopScale(self);
   }
 
-  // --- SKEW CONTROLS ---
   initSkew() {
     this.skewTarget = this.element.querySelectorAll('[data-skew]');
     if (this.skewTarget.length > 0) {
