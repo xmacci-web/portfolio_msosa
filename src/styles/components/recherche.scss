@@ -1,0 +1,33 @@
+.recherche {
+    width: 100%;
+
+    position: relative;
+
+    h2 {
+        color: transparent !important;
+        -webkit-text-stroke: 2px var(--color-black);
+    }
+
+    .recherche__content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .recherche__text {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .recherche__item {
+            position: absolute;
+            text-align: center;
+            font-size: var(--font-size-spanB);
+            line-height: 80px;
+        }
+    }
+}

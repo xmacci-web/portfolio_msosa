@@ -4,20 +4,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 0;
-    box-sizing: border-box;
+    padding-top: var(--spacing-lg);
     overflow: hidden;
 
-    .wrapper {
-        padding-left: 0;
-    }
-
-    .interets__title {
-        font-size: var(--font-size-spanBSpray);
-        color: var(--color-primary);
-        margin: 0;
-        text-transform: uppercase;
-        font-weight: 700;
+    h2 {
+        color: transparent;
+        -webkit-text-stroke: 2px var(--color-black);
     }
 
     .interets__container {
@@ -30,29 +22,21 @@
     .marquee {
         display: flex;
         width: 100%;
-
         user-select: none;
-
         .marquee__track {
             display: flex;
             flex-shrink: 0;
-            white-space: nowrap;
             gap: var(--spacing-md);
             padding-right: var(--spacing-md);
-
-            font-size: var(--font-size-spanB);
-
-            line-height: 1;
-
+            font-size: var(--font-size-spanBSpray);
+            font-family: var(--font-secondary);
             span {
-                display: inline-block;
-
                 &.filled.green {
-                    color: #80c200;
+                    color: var(--color-primary);
                 }
                 &.outline.green {
                     color: transparent;
-                    -webkit-text-stroke: 2px #80c200;
+                    -webkit-text-stroke: 2px var(--color-primary);
                 }
 
                 &.filled.dark {

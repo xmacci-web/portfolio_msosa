@@ -9,6 +9,7 @@ import Tabs from './components/Tabs.js';
 import TextAnim from './components/TextAnim.js';
 import Projets from './components/Projets.js';
 import Caractere from './components/Caractere.js';
+import Words from './components/Words.js';
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
@@ -24,6 +25,7 @@ export default class ComponentFactory {
       TextAnim,
       Projets,
       Caractere,
+      Words,
     };
     this.init();
   }

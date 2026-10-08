@@ -5,6 +5,7 @@
 
     h2 {
         color: var(--color-white);
+        margin: 0;
     }
     @media screen and (max-width: 900px) {
         min-height: auto;
@@ -20,7 +21,16 @@
             height: auto;
         }
     }
+    .hero__subtitle {
+        position: relative;
 
+        height: 125px;
+
+        .hero__subtitle-item {
+            position: absolute;
+            white-space: nowrap;
+        }
+    }
     .hero__content {
         padding-top: 180px;
         width: 48%;

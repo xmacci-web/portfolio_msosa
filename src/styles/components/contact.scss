@@ -1,0 +1,117 @@
+.contact {
+    width: 100%;
+    padding: 100px 0;
+    position: relative;
+
+    .contact__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+    }
+
+    .contact__title {
+        display: flex;
+        flex-direction: column;
+        font-size: var(--font-size-spanBSpray);
+        font-family: var(--font-secondary);
+        color: var(--color-primary);
+        gap: 100px;
+
+        .contact__word {
+            &--1 {
+                margin-left: 0;
+            }
+            &--2 {
+                margin-left: 20%;
+            }
+            &--3 {
+                margin-left: 40%;
+            }
+        }
+    }
+
+    /* --- Formulaire --- */
+    .contact__form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+
+        .contact__field {
+            width: 100%;
+
+            input,
+            textarea {
+                width: 100%;
+                background: transparent !important;
+                border: none;
+                border-bottom: 2px solid var(--color-primary);
+                box-shadow: none !important;
+                border-radius: 0;
+                padding: 15px 0;
+                color: var(--color-white);
+                font-family: var(--font-primary);
+                font-size: var(--font-size-h3);
+                outline: none;
+                resize: none;
+                transition: border-color 0.3s ease;
+
+                &::placeholder {
+                    color: var(--color-white);
+                    opacity: 0.8;
+                }
+
+                &:focus {
+                    border-bottom-color: var(--color-primary);
+                }
+            }
+        }
+
+        /* Bouton d'envoi épuré */
+        .contact__submit {
+            background: transparent;
+            border: none;
+            color: var(--color-white);
+            font-family: var(--font-primary);
+            font-size: var(--font-size-h3);
+            font-weight: 700;
+            cursor: pointer;
+            align-self: flex-start;
+            padding: 10px 0;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--color-primary);
+            }
+        }
+
+        /* Écran de confirmation caché par défaut */
+        .form__confirmation {
+            display: none;
+
+            .contact__thanks {
+                color: var(--color-primary);
+                font-family: var(--font-secondary);
+                font-size: var(--font-size-h2);
+                margin: 0;
+            }
+        }
+
+        /* Affichage une fois envoyé */
+        &.is-sent {
+            .form__body {
+                display: none;
+            }
+
+            .form__confirmation {
+                display: block;
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
 <div id="smooth-wrapper" data-component="Scroller">
     <div id="smooth-content">
         <div class="separateur__header"></div>
-        <section class="hero">
+        <section class="hero" data-component="Words">
             <div class="wrapper">
                 <div class="hero__media">
                     <img src="assets/images/herotemp.png" alt="hero" data-scale />
@@ -18,8 +18,10 @@
                         <h1>Sosa</h1>
                         <h1 class="Silva">Silva</h1>
                     </div>
-
-                    <h2>Designer Ui</h2>
+                    <div class="hero__subtitle js-rotate">
+                        <h2 class="hero__subtitle-item js-rotate-item">Designer Ui</h2>
+                        <h2 class="hero__subtitle-item js-rotate-item">Développeur Web</h2>
+                    </div>
                     <div class="hero__sous-titre">
                         <p class="small">Défilez vers le bas</p>
                     </div>
@@ -270,7 +272,7 @@
         <div class="separateur"></div>
         <section class="interets">
             <div class="wrapper">
-                <h2 class="interets-title">Ce que j’aime</h2>
+                <h2>Ce que j’aime</h2>
             </div>
 
             <div class="interets__container">
@@ -324,23 +326,23 @@
             </div>
         </section>
         <div class="separateur"></div>
-        <section class="recherche">
+        <section class="recherche" data-component="Words">
             <div class="wrapper">
-                <h2 class="recherche__title">Ce que je recherche</h2>
+                <h2>Ce que je recherche</h2>
 
                 <div class="recherche__content">
-                    <div class="recherche__text js-recherche-text">
-                        <span>
+                    <div class="recherche__text js-rotate">
+                        <span class="recherche__item js-rotate-item">
                             Je veux apprendre
                             <br />
                             avec vous
                         </span>
-                        <span>
+                        <span class="recherche__item js-rotate-item">
                             Je veux m’adapter
                             <br />
                             à vous
                         </span>
-                        <span>
+                        <span class="recherche__item js-rotate-item">
                             Je veux découvrir
                             <br />
                             avec vous
@@ -349,6 +351,8 @@
                 </div>
             </div>
         </section>
+        <div class="separateur"></div>
+
+        {% include '_partials/_footer.html' %}
     </div>
 </div>
-{% include '_partials/_footer.html' %}

@@ -27,23 +27,25 @@
     .caractere-mots {
         position: absolute;
         font-size: var(--font-size-spanBSpray);
-        opacity: 0; // Géré par GSAP
-
+        opacity: 0;
+        font-family: var(--font-secondary);
         &.mot-1 {
             top: 30%;
             left: 10%;
-            color: #80c200;
+            color: var(--color-primary);
         }
 
         &.mot-2 {
             top: 50%;
             right: 10%;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--color-black);
         }
 
         &.mot-3 {
             top: 70%;
             left: 10%;
-            color: #80c200;
+            color: var(--color-primary);
         }
     }
 }
