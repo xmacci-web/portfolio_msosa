@@ -91,6 +91,54 @@ export default class Scroller {
     });
   }
 
+  initPin() {
+    const pinTargets = this.element.querySelectorAll('[data-pin-items]');
+
+    pinTargets.forEach((target) => {
+      const words = target.querySelectorAll('.caractere-mots');
+
+      if (!words.length) return;
+
+      // État initial : tous les mots sont baissés et invisibles
+      gsap.set(words, { opacity: 0, y: 40 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: target,
+          pin: true,
+          start: 'top top',
+          end: '+=250%', // Longueur du scroll pendant le blocage
+          scrub: 1, // Fluidité au scroll
+          anticipatePin: 1,
+        },
+      });
+
+      words.forEach((word, index) => {
+        // 1. Le mot apparaît en montant légèrement vers le centre
+        tl.to(word, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out',
+        });
+
+        // 2. Si ce n'est pas le dernier mot, il disparaît vers le haut
+        if (index < words.length - 1) {
+          tl.to(
+            word,
+            {
+              opacity: 0,
+              y: -40,
+              duration: 0.8,
+              ease: 'power2.in',
+            },
+            '+=0.6', // Temps de pause où le mot reste fixe à l'écran
+          );
+        }
+      });
+    });
+  }
+
   setOptions() {
     if (this.element.querySelector('[data-skew]')) {
       this.options.hasSkew = true;
@@ -99,6 +147,10 @@ export default class Scroller {
     if (this.element.querySelector('[data-scale]')) {
       this.options.hasScale = true;
       this.initScale();
+    }
+    if (this.element.querySelector('[data-pin-items]')) {
+      this.options.hasPinItems = true;
+      this.initPin();
     }
   }
 }

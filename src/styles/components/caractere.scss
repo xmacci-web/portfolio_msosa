@@ -9,10 +9,17 @@
     }
 
     .caractere-container {
-        position: relative;
-        height: 100%;
-        width: 100%;
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        .caractere-mots-wrapper {
+            display: grid;
+            place-items: center;
+            margin-top: 2rem;
+        }
         h2 {
             position: absolute;
             top: 10%;
@@ -25,10 +32,12 @@
     }
 
     .caractere-mots {
+        grid-area: 1 / 1;
         position: absolute;
         font-size: var(--font-size-spanBSpray);
         opacity: 0;
         font-family: var(--font-secondary);
+        text-transform: uppercase;
         &.mot-1 {
             top: 30%;
             left: 10%;
