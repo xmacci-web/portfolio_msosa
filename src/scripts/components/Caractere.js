@@ -14,15 +14,26 @@ export default class Caractere {
   init() {
     if (!this.element || !this.words.length) return;
 
-    /* --- 1. GESTION DU THÈME DÉFINITIF POUR LE RESTE DE LA PAGE --- */
+    /* --- 1. ACTIVATION DU THÈME CLAIR --- */
     ScrollTrigger.create({
       trigger: this.element,
-      start: 'top 50%', // Active le fond blanc dès le milieu de la section
+      start: 'top 50%',
       onEnter: () => document.body.classList.add('theme-light'),
-      onLeaveBack: () => document.body.classList.remove('theme-light'), // Remet en noir SEULEMENT si on remonte
+      onLeaveBack: () => document.body.classList.remove('theme-light'),
     });
 
-    /* --- 2. TIMELINE DE PINNING ET ANIMATION DES MOTS --- */
+    /* --- 2. RETRAIT DU THÈME CLAIR AU FOOTER --- */
+    const footer = document.querySelector('footer'); // Modifie la balise ou la classe si ton footer a une autre classe (ex: '.contact' ou '.footer')
+    if (footer) {
+      ScrollTrigger.create({
+        trigger: footer,
+        start: 'top 80%', // Se déclenche dès que le haut du footer arrive à 80% du bas de l'écran
+        onEnter: () => document.body.classList.remove('theme-light'),
+        onLeaveBack: () => document.body.classList.add('theme-light'),
+      });
+    }
+
+    /* --- 3. TIMELINE DE PINNING ET ANIMATION DES MOTS --- */
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.element,

@@ -1,47 +1,76 @@
     <footer class="footer">
-        <section class="contact">
         <div class="wrapper">
-            <div class="contact__container">
+            <section class="contact">
             
-            <!-- Titre en escalier (Gauche) -->
-            <h2 class="contact__title">
-                <span class="contact__word contact__word--1">ON</span>
-                <span class="contact__word contact__word--2">SE</span>
-                <span class="contact__word contact__word--3">PARLE?</span>
-            </h2>
+                <div class="contact__container">
+                
+                <!-- Titre en escalier (Gauche) -->
+                <h2 class="contact__title">
+                    <span class="contact__word contact__word--1">ON</span>
+                    <span class="contact__word contact__word--2">SE</span>
+                    <span class="contact__word contact__word--3">PARLE?</span>
+                </h2>
 
-            <form class="contact__form" data-component="Form" autocomplete="off">
-                <div class="form__body">
-                    
-                    <div class="contact__field">
-                    <input type="text" name="fullname" placeholder="Nom" required />
-                    <p class="error-msg">Rentrez votre nom</p>
+                <form class="contact__form" data-component="Form" autocomplete="off">
+                    <div class="form__body">
+                        
+                        <div class="contact__field">
+                        <input type="text" name="fullname" placeholder="Nom" required />
+                        <p class="error-msg">Rentrez votre nom</p>
+                        </div>
+
+                        <div class="contact__field">
+                        <input type="email" name="email" placeholder="Courriel" required />
+                        <p class="error-msg">Le courriel n'est pas valide</p>
+                        </div>
+
+                        <div class="contact__field">
+                        <textarea name="comment" placeholder="Message" rows="2" required></textarea>
+                        <p class="error-msg">Veuillez inscrire votre message</p>
+                        </div>
+
+                        <button type="submit" class="btn spacing-btn">ENVOYER</button>
                     </div>
 
-                    <div class="contact__field">
-                    <input type="email" name="email" placeholder="Courriel" required />
-                    <p class="error-msg">Le courriel n'est pas valide</p>
+                    <div class="form__confirmation">
+                        <h2 class="contact__thanks">MERCI !</h2>
                     </div>
-
-                    <div class="contact__field">
-                    <textarea name="comment" placeholder="Message" rows="2" required></textarea>
-                    <p class="error-msg">Veuillez inscrire votre message</p>
-                    </div>
-
-                    <button type="submit" class="contact__submit">ENVOYER</button>
-                </div>
-
-                <div class="form__confirmation">
-                    <h2 class="contact__thanks">MERCI !</h2>
-                </div>
                 </form>
 
+                </div>
+                <div class="line">
+                    <span class="line__inner"></span>
+                    <span class="line__inner"></span>
+                    <span class="line__inner"></span>
+                    <span class="line__inner"></span>
+                </div>
+            
+            
+            </section>
+            <nav class="nav__footer">
+                    <ul class="links footer__links"> 
+                        <li><a href="#" class="link">Utilisation IA</a></li>
+                        <li><a href="#" class="link">CV</a></li>
+                        <li><a href="#" class="link">Mes projets</a></li>
+                    </ul>
+                
+                    <div class="footer__socials">
+                        <svg class="icon icon--lg">
+                            <use href="#icon-github"></use>
+                        </svg>
+                        <svg class="icon icon--lg">
+                            <use href="#icon-linkedIn"></use>
+                        </svg>
+                        <svg class="icon icon--lg">
+                            <use href="#icon-youtube"></use>
+                        </svg>
+                    </div>
+            </nav>
+            <div class="footer__copyright">
+                <span>2026 © Marcos Sosa Silva</span>
             </div>
-        </div>
-        </section>
 
-
-
+    </div>
     </footer>
 </div>
 </div>

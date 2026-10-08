@@ -20,12 +20,10 @@ export default class Form {
   onSubmit(event) {
     event.preventDefault();
     if (this.validate()) {
-      console.log('success'); // envoie ajax du formulaire
-      //OUI
+      console.log('success'); // envoi ajax du formulaire
       this.showConfirmation();
     } else {
       console.log('fail');
-      //non
     }
   }
 
@@ -36,7 +34,8 @@ export default class Form {
     for (let i = 0; i < this.formElements.length; i++) {
       const input = this.formElements[i];
 
-      if (input.required && !this.validateInput(input)) {
+      // Ignore les boutons et éléments non validables
+      if (input.willValidate && input.required && !this.validateInput(input)) {
         isValid = false;
       }
     }
@@ -47,25 +46,37 @@ export default class Form {
     const input = event.currentTarget || event;
 
     if (input.validity.valid) {
-      //pas derreur
+      // pas d'erreur
       this.removeError(input);
     } else {
-      //erreur afficher
+      // erreur a afficher
       this.addError(input);
     }
     return input.validity.valid;
   }
 
+  getContainer(input) {
+    return (
+      input.closest('[data-input-container]') ||
+      input.closest('.contact__field') ||
+      input.closest('.input')
+    );
+  }
+
   addError(input) {
-    const container =
-      input.closest('[data-input-container]') || input.closest('.input');
-    container.classList.add('error');
+    const container = this.getContainer(input);
+    if (container) {
+      container.classList.add('error');
+    }
   }
+
   removeError(input) {
-    const container =
-      input.closest('[data-input-container]') || input.closest('.input');
-    container.classList.remove('error');
+    const container = this.getContainer(input);
+    if (container) {
+      container.classList.remove('error');
+    }
   }
+
   showConfirmation() {
     this.element.classList.add('is-sent');
   }

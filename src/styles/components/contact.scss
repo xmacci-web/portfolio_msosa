@@ -2,7 +2,7 @@
     width: 100%;
     padding: 100px 0;
     position: relative;
-
+    --line-height: 6px;
     .contact__container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -13,6 +13,7 @@
             grid-template-columns: 1fr;
             gap: 50px;
         }
+        padding-bottom: 75px;
     }
 
     .contact__title {
@@ -43,6 +44,7 @@
         gap: var(--spacing-lg);
 
         .contact__field {
+            position: relative;
             width: 100%;
 
             input,
@@ -53,14 +55,14 @@
                 border-bottom: 2px solid var(--color-primary);
                 box-shadow: none !important;
                 border-radius: 0;
-                padding: 15px 0;
+                padding: 50px 0 20px 0;
                 color: var(--color-white);
                 font-family: var(--font-primary);
                 font-size: var(--font-size-h3);
                 outline: none;
                 resize: none;
                 transition: border-color 0.3s ease;
-
+                overflow: hidden;
                 &::placeholder {
                     color: var(--color-white);
                     opacity: 0.8;
@@ -69,41 +71,49 @@
                 &:focus {
                     border-bottom-color: var(--color-primary);
                 }
+
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus,
+                &:-webkit-autofill:active {
+                    transition: background-color 5000s ease-in-out 0s;
+                    -webkit-text-fill-color: var(--color-white) !important;
+                }
+            }
+
+            .error-msg {
+                display: none;
+                color: var(--color-white);
+                font-size: 0.85rem;
+                margin-top: 6px;
+                font-family: var(--font-primary);
+            }
+
+            &.error {
+                input,
+                textarea {
+                    border-bottom-color: var(--color-white) !important;
+                }
+
+                .error-msg {
+                    display: block;
+                }
             }
         }
 
-        /* Bouton d'envoi épuré */
-        .contact__submit {
-            background: transparent;
-            border: none;
-            color: var(--color-white);
-            font-family: var(--font-primary);
-            font-size: var(--font-size-h3);
-            font-weight: 700;
-            cursor: pointer;
-            align-self: flex-start;
-            padding: 10px 0;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: var(--color-primary);
-            }
-        }
-
-        /* Écran de confirmation caché par défaut */
         .form__confirmation {
             display: none;
 
             .contact__thanks {
                 color: var(--color-primary);
                 font-family: var(--font-secondary);
-                font-size: var(--font-size-h2);
-                margin: 0;
+                font-size: var(--font-size-h1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
 
-        /* Affichage une fois envoyé */
         &.is-sent {
             .form__body {
                 display: none;
@@ -112,6 +122,9 @@
             .form__confirmation {
                 display: block;
             }
+        }
+        .spacing-btn {
+            margin-top: 50px;
         }
     }
 }
